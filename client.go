@@ -26,7 +26,7 @@ type pandapi struct {
 	*http.Client
 }
 
-func NewPandapiClient(baseURL string, token string, httpTimeout time.Duration) (PandapiClient, error) {
+func NewPandapiClient(baseURL string, token string, httpTimeout time.Duration) PandapiClient {
 	transport := &http.Transport{
 		DialContext: (&net.Dialer{
 			Timeout: transportDialerTimeout,
@@ -44,7 +44,7 @@ func NewPandapiClient(baseURL string, token string, httpTimeout time.Duration) (
 		baseUrl: baseURL,
 		token:   token,
 		Client:  cl,
-	}, nil
+	}
 }
 
 func (p *pandapi) GetRunningMatches(ctx context.Context) (matches []models.Match, err error) {
