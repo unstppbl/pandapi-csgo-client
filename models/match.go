@@ -161,7 +161,7 @@ func (m Match) Parse(tz string, includeInfoLinks bool) (parsed string, err error
 
 	if m.Status != "finished" {
 		for _, stream := range m.StreamsList {
-			parsed += fmt.Sprintf("[Twitch %s](%s)\n", strings.ToUpper(stream.Language), stream.RawURL)
+			parsed += fmt.Sprintf("Twitch %s: <%s>\n", strings.ToUpper(stream.Language), stream.RawURL)
 		}
 	}
 
